@@ -1,0 +1,248 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+
+
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+                    _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+            </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Employee Address
+            </li>
+        </ol>
+    </nav>
+</div>
+<section class="content bg-light">
+    <div class="container">
+        <div class="headempself">
+            <h3>Employee Address</h3>
+        </div>
+        <div class="box box-default">
+            
+            <fieldset>
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Employee Address</p>
+                            </div>
+
+                            
+                        </label>
+                    </div>
+                </legend>
+                <form action="">
+                    <!-- 1 -->
+                    <div class="row mt-5">
+                        <div class="col-md-3">
+                            <label>State</label>
+                            <select class="form-select form-control"   #mySelectP
+                            (change)='getDistrict(mySelectP.value)' id="">
+                                <option *ngFor="let mst of Statedata" value={{mst.STATE_ID}} >
+                                    {{mst.ST_NAME_EN}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>District </label>
+                            <select class="form-select form-control"   #mySelectD
+                            (change)='getAssembly(mySelectD.value)' id="districtCd">
+                            
+                                <option *ngFor="let mst of Districtdata" value={{mst.DIST_ID}} >
+                                    {{mst.DIST_NAME_EN}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Area</label>
+                            <div class="form-control">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="area" id="areaR" value="R" (change)="onItemChange($event)">
+                                    <label class="form-check-label" for="areaR">Rural</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="area" id="areaU" value="U" (change)="onItemChange($event)">
+                                    <label class="form-check-label" for="areaU">Urban</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-md-3 pr-0">
+                            <div class="col-md-6 pr-0">
+                                <label>Block / Muncipal</label>
+                                <select class="form-select" aria-label="Default select example" class="form-control" (change)="getPanchayatWard($event)">
+                                    <option *ngFor="let mst of BlockCitydata" value={{mst.MUN_P_ID}} >
+                                        {{mst.MUN_P_NAME}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 pr-0">
+                                <label>Panchayat / Ward </label>
+                                <select class="form-select" aria-label="Default select example" class="form-control" (change)="getVillage($event)" id="">
+                                    <option *ngFor="let mst of PanchayatWardata" value={{mst.PW_ID}} >
+                                        {{mst.PW_NAME}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="row  mt-5">
+                        <div class="col-md-3">
+                            <label>Village/ Street / Nagar </label>
+
+                                <select class="form-select" aria-label="Default select example" class="form-control"  id="">
+                                    <option *ngFor="let mst of Villagedata" value={{mst.VILL_ID}} >
+                                        {{mst.VILL_NAME_EN}}
+                                    </option>
+                                </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>House No<span class="text-red">*</span> </label>
+                            <input type="text" name="text" class="form-control" required="" data-validation-required-message="This field is required" aria-invalid="false"> </div>
+                        <div class="col-md-3">
+                            <label>PinCode<span class="text-red">*</span> </label>
+                            <input type="text" name="text" class="form-control" required="" data-validation-required-message="This field is required" aria-invalid="false"> </div>
+                        <div class="col-md-3">
+                            <label>Assembly</label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+                                <option selected>Assembly</option>
+                                <option value="1">Jaipur</option>
+                                <option value="2">Sikar</option>
+                                <option value="3">Churu</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="row  mt-5"> </div>
+                    
+                    <div class="Row" style="padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Currunt Address</p>
+                            </div>
+                        </label>
+                        <hr> 
+                    </div>
+
+                    <div class="row  mt-5">
+                        <div class="col-md-4">
+                            <div class="topcheck" style="top: 20px; text-align: left;">
+                                <div class="form-check p-0">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                                    <label class="form-check-label" for="exampleCheck2">Same As Permanent Address</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 1 -->
+                    <div class="row  mt-5">
+                        <div class="col-md-3">
+                            <label >State</label>
+                            <select    class="form-select form-control"      #mySelect
+                            (change)='getDistrict(mySelect.value)' id="state" >
+                                <option *ngFor="let mst of Statedata" value={{mst.STATE_ID}} >
+                                    {{mst.ST_NAME_EN}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>District </label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+                                <option *ngFor="let mst of Districtdata" value={{mst.DIST_ID}} >
+                                    {{mst.DIST_NAME_EN}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="">Area</label>
+                            <div class="form-control">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="R" (change)="onItemChange($event)">
+                                    <label class="form-check-label" for="inlineRadio1">Rural</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="U" (change)="onItemChange($event)">
+                                    <label class="form-check-label" for="inlineRadio2">Urban</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-md-3 pr-0">
+                            <div class="col-md-6 pr-0">
+                                <label>Block / Muncipal</label>
+                                <select class="form-select" aria-label="Default select example" class="form-control" (change)="getPanchayatWard($event)" id="BlockCitydata">
+                                    <option *ngFor="let mst of BlockCitydata" value={{mst.MUN_P_ID}} >
+                                        {{mst.MUN_P_NAME}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 pr-0">
+                                <label>Panchayat / Ward </label>
+                                <select class="form-select" aria-label="Default select example" class="form-control" (change)="getVillage($event)" >
+                                    <option *ngFor="let mst of PanchayatWardata" value={{mst.WARD_ID}} >
+                                        {{mst.WARD_NAME}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="row  mt-5">
+                        <div class="col-md-3">
+                            <label>Village/ Street / Nagar </label>
+]											<select class="form-select" aria-label="Default select example" class="form-control"  id="">
+                                        <option *ngFor="let mst of Villagedata" value={{mst.VILL_ID}} >
+                                            {{mst.VILL_NAME_EN}}
+                                        </option>
+                                    </select>
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <label>House No<span class="text-red">*</span> </label>
+                            <input type="text" name="text" class="form-control" required="" data-validation-required-message="This field is required" aria-invalid="false"> </div>
+                        <div class="col-md-3">
+                            <label>PinCode<span class="text-red">*</span> </label>
+                            <input type="text" name="text" class="form-control" required="" data-validation-required-message="This field is required" aria-invalid="false"> </div>
+                        <div class="col-md-3">
+                            <label>Assembly</label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+                                <option selected>Assembly</option>
+                                <option value="1">Jaipur</option>
+                                <option value="2">Sikar</option>
+                                <option value="3">Churu</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <div class="Row" style="text-align: center;">
+                    <button type="button"  class="btn btn-success margin w-170 " routerLink="/EmpDateComponent" >Back</button>
+                    <button type="button" class="btn btn-success margin w-170 " routerLink="/EmpFamilyDetailComponent" >Next</button>
+
+                </div>
+            </fieldset>
+            <div class="Row" style="text-align: center;">
+                <button class="btn btn-primary margin-2 w-170">Save</button>
+                <button class="btn btn-warning margin w-170">Refresh</button>
+                <button class="btn btn-info margin-2 w-170">Modify</button>
+            </div>
+            <!-- <div class="Row col-12" style="padding-bottom: 30px; text-align: center;">
+                <button type="button" id="btnEmpPersonal" class="btn btn-primary margin-2 w-170 btnclr" routerLink="/EmpMstComponent" >Employee General Details</button>
+						<button id="btnEmpService" class="btn btn-primary margin w-170 btnclr" routerLink="/EmpIdentityComponent" >Employee Id Number</button>
+						<button id="btnEmpDate" class="btn btn-primary margin w-170 btnclr" routerLink="/EmpDateComponent" >Employee Date</button>
+						<button id="btnEmpAddress"  routerLink="/EmpAddressComponent" class="btn btn-primary margin w-170 btnclr">Employee Address</button>
+						<button id="btnEmpFamily"  routerLink="/EmpFamilyDetailComponent" class="btn btn-primary margin-2 w-120 btnclr">Family Details</button>
+						<button id="btnEmpBank"  routerLink="/EmpBankAcDetailComponent" class="btn btn-primary margin w-170 btnclr">Bank Details</button>
+						<button id="btnEmpPay" routerLink="/EmpPayEComponent" class="btn btn-primary margin-2 w-120 btnclr">Pay Entitlement</button>
+						<button id="btnEmpDoc"  routerLink="/EmpDocComponent" class="btn btn-primary margin w-170 btnclr">Employee Documents</button>
+            </div> -->
+            <app-emp-gen-detail></app-emp-gen-detail>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

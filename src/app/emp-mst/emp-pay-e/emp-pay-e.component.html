@@ -1,0 +1,266 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+
+
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+                    _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+            </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Pay Entitlement
+            </li>
+        </ol>
+    </nav>
+</div>
+<section class="content bg-light">
+    <div class="container">
+        <div class="headempself">
+            <h3>Employee Pay Entitlement</h3>
+        </div>
+        <div class="box box-default">
+            
+            <fieldset>
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Employee Pay Entitlement</p>
+                            </div>
+
+                            
+                        </label>
+                    </div>
+                </legend>
+                <form action="">
+                    <!-- 1 -->
+                    <div class="row  mt-5">
+                        <div class="col-md-4">
+                            <label>Pay Commission </label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+
+                                <option *ngFor="let mst of PAY_COMM_Data" value={{mst.PAY_COMMISION_ID}}>
+                                    {{mst.PAY_COMM_NAME_EN}}
+                                </option>
+                             </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Pay Band Scale
+                            </label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+<!-- 
+                                <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                                    {{mst.SRVC_CAT_CD_NAME_EN}}
+                                </option> -->
+                             </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">Grade Pay</label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+
+                                <!-- <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                                    {{mst.SRVC_CAT_CD_NAME_EN}}
+                                </option> -->
+                             </select>
+                        </div>
+
+                    </div>
+                    <!-- 2 -->
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <label>HoA
+                            </label>
+                            <input type="text" name="HoA" class="form-control" formControlName="HoA" required="" aria-invalid="false">
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">DA Rate</label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+
+                                <option *ngFor="let mst of DAdata" value={{mst.DA_RATE_ID}}>
+                                    {{mst.DA_RATE }} 
+                                </option>
+                             </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">Govt Quarter</label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+
+                                <!-- <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                                    {{mst.SRVC_CAT_CD_NAME_EN}}
+                                </option> -->
+                             </select>
+                        </div>
+                    </div>
+
+                    <!-- 3 -->
+
+ 
+                        <div class="row mt-5">
+                            <div class="col-md-4">
+                                <label>HRA Rate
+                                </label>
+                                <select class="form-select" aria-label="Default select example" class="form-control" id="">
+    
+                                    <option *ngFor="let mst of HRAData" value={{mst.CITY_CLASS_ID}}>
+                                        {{mst.RATE}}
+                                    </option>
+                                 </select>
+                            </div>
+                            
+                        </div>
+                                        
+                <!-- filedset -->
+
+                  
+
+
+
+                    <fieldset>
+                        <legend> 
+                            
+                            <div class="Row" style="padding-top: 10px;">
+                            <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                                <div class="section-title">
+                                    <p>Earning & Deduction Heads</p>
+                                </div>
+                            </label>
+                          
+                        </div>
+                            
+                        </legend>
+
+                    <div class="row" >
+                        <div class="col-md-6">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Earning Component</th>
+                                </tr>
+                                <tr>
+                                    <th>Sr.No.</th>
+                                    <th>Pay Head Name</th>
+                                    <th>Pay Head Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Basic Pay/Band Pay</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Grade Pay</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Dearness Allowance</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>House Rent Allowance</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a routerLink=""><u>Add Component</u></a>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Deduction Component</th>
+                                    </tr>
+                                    <tr>
+                                        <th>Sr.No.</th>
+                                        <th>Pay Head Name</th>
+                                        <th>Pay Head Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>GPF</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>NPS Employee Contribution</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>SI</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Income Tax</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <a routerLink="">Add Component</a>
+
+                        </div>                       
+
+                    </div>
+
+                 <div class="row mt-2">
+                    <table class="table table-bordered">
+                        <thead>
+                          <tr>
+                            
+                            <th scope="col">Net Earning</th>
+                            <th scope="col">Net Deduction</th>
+                            <th scope="col">Net Salary</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                        
+                           
+                          </tr>
+                          <tr>
+                          
+                         
+                          </tr>
+                          <tr>
+                          
+                           
+                          </tr>
+                        </tbody>
+                      </table>
+                 
+                 </div>
+
+
+                </fieldset>
+
+                </form>
+                <div class="Row" style="text-align: center;">
+                    <div class="Row" style="text-align: center;">
+                        <button  class="btn btn-success margin w-170" routerLink="/EmpBankAcDetailComponent">Back</button>
+                        <button class="btn btn-success margin w-170" routerLink="/EmpDocComponent" >Next</button>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="Row" style="text-align: center;">
+                <button class="btn btn-primary margin-2 w-170">Save</button>
+                <button class="btn btn-warning margin w-170">Refresh</button>
+                <button class="btn btn-info margin-2 w-170">Modify</button>
+            </div>
+            <app-emp-gen-detail></app-emp-gen-detail>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

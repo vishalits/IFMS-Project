@@ -1,0 +1,158 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+
+
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+                    _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+            </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Send Data
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<section class="content bg-light">
+    <div class="container">
+        <div class="box box-default">
+            
+            <fieldset style="border-color:#2471BC ;">
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Bank Account Change Request</p>
+                            </div>
+                        </label>
+                    </div>
+                </legend>
+                <form [formGroup]="updateBank" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Current Bank Detail</h5>
+                        </div>
+                    </div>
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-4">
+                            <label>Account No.</label>
+                            <input type="text" class="form-control" formControlName="accountNumber">
+                        </div>
+                        <div class="col-md-4">
+                            <label>State</label>
+                            <select class="form-select form-control"   #mySelectP
+                            (change)='getDistrict(mySelectP.value)' id="" formControlName="state">
+                                <option *ngFor="let mst of Statedata" value={{mst.STATE_ID}} >
+                                    {{mst.ST_NAME_EN}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>District</label>
+                            <select class="form-select form-control" 
+                           id="districtCd" formControlName="district">
+                                <option *ngFor="let mst of Districtdata" value={{mst.DIST_ID}} >
+                                    {{mst.DIST_NAME_EN}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-4">
+                            <label>Bank</label>
+                            <select class="form-select" aria-label="Default select example" (change)="getBankBranch($event)" class="form-control" formControlName="bank">
+                                <option *ngFor="let mst of BankData" value={{mst.BANK_ID}}> {{mst.BANK_NAME_EN}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Branch</label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="" formControlName="branch">
+                                <option *ngFor="let mst of BankBranchData" value={{mst.BANK_BRANCH_ID}}> {{mst.BRANCH_NAME_EN}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            
+                        </div>
+                    </div>
+                    <hr style="border-color: #2471BC;" >
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>New Bank Detail</h5>
+                        </div>
+                    </div>
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-5">
+                            <label>Enter IFSC</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="col-md-2">
+                            <h5 style="text-align:center;">OR</h5>
+                        </div>
+                        <div class="col-md-5">
+                            <label>Account No.</label>
+                            <input type="text" class="form-control" >
+                        </div>
+                    </div>
+                    <!-- <div class="row m-2  pb-5">
+                        <div class="col-md-4">
+                            <label>Select State</label>
+                            <select name="" id="#" class="form-control">
+                                <option *ngFor="let mst of GetState" value={{mst.STATE_ID}}> {{mst.ST_NAME_EN}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Select District</label>
+                            <select name="" id="#" class="form-control">
+                                <option *ngFor="let mst of GetState" value={{mst.STATE_ID}}> {{mst.ST_NAME_EN}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Select Bank</label>
+                            <select name="" id="#" class="form-control">
+                                <option *ngFor="let mst of BankName" value={{mst.BANK_ID}}> {{mst.BANK_NAME_EN}} </option>
+                            </select>
+                        </div>
+                    </div> -->
+                    
+                    <!-- <div class="row m-2  pb-5">
+                        <div class="col-md-4">
+                            <label>Select Branch</label>
+                            <select name="" id="#" class="form-control">
+                                <option>XYZ01</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Account No.</label>
+                            <input type="text" class="form-control" >
+                        </div>
+                        <div class="col-md-4">
+                            <label>Select File</label>
+                            <input type="file" class="form-control">
+                        </div>
+                    </div> -->
+                    
+
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center;">
+                                <button class="btn btn-primary">Submit</button>
+                                <button class="btn btn-primary" style="margin-left: 5px;">Reset</button>
+                            </div>
+                        </div>
+                </form>
+                <p style="color: red;" class="mt-1">NOTE: Please Upload Scanned Copy Of Passbook Front Page In .pdf/.jpg Format.(Size Limit: 5MB)</p> 
+ 
+            </fieldset>
+            <app-essbutton></app-essbutton>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
+
+

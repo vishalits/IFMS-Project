@@ -1,0 +1,298 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+          <li _ngcontent-usv-c162="" class="breadcrumb-item">
+            <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+          </li>
+          <li _ngcontent-usv-c162="" class="breadcrumb-item">
+            <a _ngcontent-usv-c162="" routerlink="/employee-self-service" ng-reflect-router-link="/employee-self-service" href="/employee-self-service">Menu</a>
+          </li>
+          <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">Employee Self Service</li>
+        </ol>
+      </nav>
+</div>
+<section class="content bg-light">
+    <div class="container">
+        <div class="headempself">
+            <h3>Employee Self Service</h3>
+        </div>
+        <div class="box box-default">
+            <div class="headsearch">
+                <label for="Emp-ID"><b>Employee ID</b></label>
+                <input type="text" name="Empid" id="Empid"><i class="fa fa-search" aria-hidden="true"></i>
+                <button type="button" class="btn btn-primary" (click)="getempData();">Search</button>
+            </div>
+            <fieldset>
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Employee Information</p>
+                            </div>
+
+
+                        </label>
+                    </div>
+                </legend>
+                <form  [formGroup]="EmpSelfDetailForm" (ngSubmit)="onSubmit()">
+                    <!-- <div class="row m-2  pb-5">
+                        <div class="col-md-12">
+                            <div class="empmemID">
+                                <label for="Emp-Mem-ID"><b>Janadhaar Member ID</b></label>
+                                <input type="text">
+                                <button type="button" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Employee Self Detail Start -->
+                    <div class="row m-2 mt-5" >
+                        <div class="col-md-4">
+                            <label>Name <span class="text-red">*</span>
+                            </label>
+                            <!-- <input type="text" name="name" class="form-control" pattern="[a-zA-Z ]*" value=""
+                                formControlName="Name"> -->
+                                <input type="text" name="text" class="form-control" pattern="[a-zA-Z ]*"
+                            value="{{empdata.nameEng}}" formControlName="Name"
+                            [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['Name'].errors}">
+                            <div *ngIf="submitted && EmpSelfDetailForm.controls['Name'].errors" class="text-danger">
+                            <div *ngIf="submitted && EmpSelfDetailForm.controls['Name'].errors['required']">
+                                Please Enter  Name
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Father Name<span class="text-red">*</span>
+                            </label>
+                            <!-- <input type="text" name="fatherName" class="form-control" pattern="[a-zA-Z ]*" value=""
+                                formControlName="fatherName"> -->
+                                <input name="fatherName" class="form-control" value="{{empdata.fatherName }}"   pattern="[a-zA-Z ]*"formControlName="fatherName"
+                                [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['fatherName'].errors}" />
+                              <div *ngIf="submitted && EmpSelfDetailForm.controls['fatherName'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpSelfDetailForm.controls['fatherName'].errors['required']">
+                                  Please Enter father Name
+                                </div>
+                              </div>    
+                        </div>
+                        <div class="col-md-4">
+                            <label>Mother Name
+                            </label>
+                            <input name="motherName" class="form-control" value="{{empdata.motherName }}"   pattern="[a-zA-Z ]*"formControlName="motherName"
+                            [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['motherName'].errors}" />
+                          <div *ngIf="submitted && EmpSelfDetailForm.controls['motherName'].errors" class="text-danger">
+                            <div *ngIf="submitted && EmpSelfDetailForm.controls['motherName'].errors['required']">
+                              Please Enter Mother Name
+                            </div>
+                          </div>    
+                            <!-- <input type="text" name="motherName" class="form-control" pattern="[a-zA-Z ]*" value=""
+                                formControlName="motherName"> -->
+                        </div>
+                    </div>
+
+                    <div class="row m-2 mt-5">
+                        <div class="col-md-4">
+                            <label>Gender <span class="text-red">*</span></label>
+                            <select name="gender" id="gender" class="form-control" formControlName="Gender_Data">
+                                
+                                <option *ngFor="let mst of Genderdata" value={{mst.GEN_ID}}> {{mst.GEN_NAME_EN}} </option>
+                                
+                                
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">Date of Birth <span class="text-red">*</span>
+                            </label>
+                            <input type="text" name="DOB" class="form-control" formControlName="dob" value={{empdata.DATE_OF_BIRTH}}
+                            [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['dob'].errors}">
+                            <div *ngIf="submitted && EmpSelfDetailForm.controls['dob'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpSelfDetailForm.controls['dob'].errors['required']">
+                                  Please Enter Date of Birth
+                                </div>
+                              </div> 
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">Social Category<span class="text-red">*</span>
+                            </label>
+                            <select name="socialcategory" id="#" class="form-control" formControlName="Social_Category" >
+                                <option *ngFor="let mst of CasteCategoryData" value={{mst.CATEGORY_ID}}> {{mst.CAT_NAME_EN}} </option>
+                                
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row m-2 mt-5">
+                        <div class="col-md-4">
+                                <label>Mobile Number<span class="text-red">*</span></label>
+                                <input type="text" name="mobileNumber" class="form-control" formControlName="mobileNumber"
+                                [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['mobileNumber'].errors}">
+                                <div *ngIf="submitted && EmpSelfDetailForm.controls['mobileNumber'].errors" class="text-danger">
+                                    <div *ngIf="submitted && EmpSelfDetailForm.controls['mobileNumber'].errors['required']">
+                                      Please Enter Mobile Number
+                                    </div>
+                                  </div> 
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">Marital Status <span class="text-red">*</span>
+                                </label>
+                                <select name="maritalstatus" id="#" class="form-control" formControlName="Marital_Status">
+                                    <!-- <option *ngFor="let mst of MaritalStatusData" value={{mst.M_STATUS_ID}}> {{mst.M_STATUS_NAME}} </option> -->
+                                    <option *ngFor="let mst of MaritalStatusData" value={{mst.M_STATUS_ID}}> {{mst.M_STATUS_NAME}} </option>
+                                    
+
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Spouse Name</label>
+                                <input type="text" name="spouseName" class="form-control" formControlName="spouseName"
+                                [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['spouseName'].errors}">
+                                <div *ngIf="submitted && EmpSelfDetailForm.controls['spouseName'].errors" class="text-danger">
+                                    <div *ngIf="submitted && EmpSelfDetailForm.controls['spouseName'].errors['required']">
+                                      Please Enter Spouse Name
+                                    </div>
+                                  </div>
+                            </div>
+
+                    </div>
+
+                    <div class="row m-2 mt-5">
+                        <div class="col-md-4">
+                            <label for="">Disable <span class="text-red">*</span> (Yes/No)</label>
+                            <div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="disableYes" formControlName="disable"
+                                        id="flexRadioDefault1" checked="true">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="disableNo" formControlName="disable"
+                                        id="flexRadioDefault2">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">Type of Disability </label>
+                            <select name="disabilitytype" id="#" class="form-control" formControlName="Disability_Type" >
+                                <option *ngFor="let mst of DisabilityTypeData" value={{mst.DISABILITY_ID}}> {{mst.DIS_TYPE_EN}} </option>
+                                
+
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Persentage Of Disability</label>
+                            <input type="text" name="percentageDisability" class="form-control" formControlName="percentageDisability"
+                            [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['percentageDisability'].errors}">
+                            <div *ngIf="submitted && EmpSelfDetailForm.controls['percentageDisability'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpSelfDetailForm.controls['percentageDisability'].errors['required']">
+                                  Please Enter Persentage Of Disability
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-2 mt-5">
+                        <div class="col-md-4">
+                            <label for="">Height</label>
+                            <input type="text" name="height" class="form-control" formControlName="height"
+                            [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['percentageDisability'].errors}">
+                        </div>
+
+                        <div class="col-md-4">   
+                            <label for="">Blood Group</label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" formControlName="Blood_Group" id="" name="bloodGroup">
+                                <option *ngFor="let mst of BloodGroupdata" value={{mst.B_GRP_ID}}> {{mst.B_GRP_NAME}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">Identification Mark <span class="text-red">*</span>
+                            </label>
+                            <input type="text" name="identificationMark" class="form-control" formControlName="identificationMark"
+                            [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['identificationMark'].errors}">
+                            <div *ngIf="submitted && EmpSelfDetailForm.controls['identificationMark'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpSelfDetailForm.controls['identificationMark'].errors['required']">
+                                  Please Enter Identification Mark
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-2 mt-5">
+                        <div class="col-md-4">
+                            <label for="">PAN No. <span class="text-red">*</span>
+                            </label>
+                            <input type="text" name="panNo" class="form-control" required="" formControlName="panNo"
+                            [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['panNo'].errors}">
+                            <div *ngIf="submitted && EmpSelfDetailForm.controls['panNo'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpSelfDetailForm.controls['panNo'].errors['required']">
+                                  Please Enter PAN No.
+                                </div>
+                              </div>
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <label for="">Email ID </label>
+                            <input type="text" name="emailID" class="form-control" value="" formControlName="emailID"
+                            [ngClass]="{'is-invalid':submitted && EmpSelfDetailForm.controls['emailID'].errors}">
+                            <div *ngIf="submitted && EmpSelfDetailForm.controls['emailID'].errors" class="text-danger">
+                                <div *ngIf="submitted && EmpSelfDetailForm.controls['emailID'].errors['required']">
+                                  Please Enter Email ID
+                                </div>
+                              </div>
+                            
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+
+                    <div class="row mr-3" >
+                        <div class="col-md-12" style="text-align: center;">
+                            <button type="button" class="btn btn-primary btn-flat margin w-100"
+                            action="save">Next</button>
+                        </div>
+                        
+                    </div>
+                    <!-- 2 Doucment Details  -->
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div class="button-tops" style="text-align: center;">
+                                <button type="submit" class="btn btn-info btn-flat margin w-100">Save</button>
+                                <button type="button" class="btn btn-success btn-flat margin w-100">Refresh</button>
+                                <button type="button" class="btn btn-warning btn-flat margin w-100"data-dismiss="modal">Edit</button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            
+                        </div>
+                    </div>
+
+                    <!-- <div class="row">
+                        
+                        <div class="col-md-12">
+                            <div class="button-tops" style="text-align: center;">
+                                <button type="submit" class="btn btn-primary btn-flat margin w-125" (click)="componentLoad('employee-date-type')" >Emp Date Type</button>
+                                <button type="submit" class="btn btn-primary btn-flat margin w-125" (click)="componentLoad('employee-nominee-update')">Nominee Update</button>
+                                <button type="submit" class="btn btn-primary btn-flat margin w-125" (click)="componentLoad('update-number')">Other Number Update</button>
+                                <button type="submit" class="btn btn-primary btn-flat margin w-125">Personal Data Update</button>
+                                <button type="submit" class="btn btn-primary btn-flat margin w-125" (click)="componentLoad('bank-acc-number')">Bank Account Change Request</button>
+                                <button type="submit" class="btn btn-primary btn-flat margin w-125">Personal Details Update</button>
+                                
+                            </div>
+                        </div>
+                    </div> -->
+                    <app-essbutton></app-essbutton>
+                    <!-- Employee Self Detail End -->
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

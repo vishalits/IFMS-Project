@@ -1,0 +1,37 @@
+.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    /* width: 215px !important; */
+}
+.employee{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btnclr {
+    border-width: 0px;
+    border-style: none;
+   
+}
+
+@media only screen and (max-width: 600px) {
+    .topcheck {
+        top: 11px !important;
+        position: relative;
+    }
+  }
+
+
+  fieldset {
+    padding: 20px;
+    border: solid 3px lightgray;
+}
+fieldset legend {
+    color: red;
+    width: auto;
+}
+fieldset .mat-form-field {
+    padding: 40px 0;
+}

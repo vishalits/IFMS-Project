@@ -1,0 +1,126 @@
+.form-group.button-top {
+  
+    margin-top: 30px;
+}
+@media only screen and (max-width: 600px) {
+    .form-group.button-top {
+
+        margin-top: 15px;
+    }
+  }
+  .button-tops {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.bg-light-blue p {
+    margin: 0 0 12px;
+    margin: 4px 5px 4px;
+    font-size: 18px;
+    left: 0;
+    display: flex;
+}
+
+.form-select option{
+border-radius: 0;
+height: 200px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    button#search-btn {
+        margin-right: 31px;
+    }
+    .input-group-btn .btn {
+        padding: 8px 10px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+  }
+
+  .mat-form-field {
+    margin-top: 16px;
+  }
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: #45aef1;
+    color: #fff;
+}
+
+
+span.input-group-btn {
+    float: right;
+    position: relative;
+    top: -37px;
+}
+
+@media only screen and (max-width: 600px) {
+    span.input-group-btn {
+        top: -32px;
+        margin-right: 0px;
+    }
+  }
+
+  /* Fieldset Position */
+ #ESSReq{
+    position: relative;
+    top: 120px;
+ }
+/* font style */
+.section-title p {
+    margin: 0;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #1a1d94;
+    line-height: 1.4;
+}
+
+
+/* filed set */
+fieldset {
+    padding: 20px;
+    border: solid 2px lightgray;
+}
+fieldset legend {
+ 
+    width: auto;
+}
+fieldset .mat-form-field {
+    padding: 40px 0;
+}
+/* Employe Self Detail Head Start */
+.headempself{
+    background-color: #2471BC;
+}
+.headempself h3{
+    padding: 5px;
+    color: white;
+    text-align: center;
+}
+.headsearch{
+    text-align: center;
+}
+.headsearch label{
+    padding-right: 20px;
+}
+.headsearch i{
+    padding: 7px;
+    font-size: 20px;
+}
+.headsearch button{
+    padding: 4px 11px;
+    border-radius: 3px;
+}
+.empmemID input{
+    margin: 0px 10px;
+}
+.empmemID button{
+    padding: 4px 11px;
+    border-radius: 3px;
+}

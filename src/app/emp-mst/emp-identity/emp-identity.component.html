@@ -1,0 +1,87 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+
+
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+                    _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+            </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Employee Id Number
+            </li>
+        </ol>
+    </nav>
+</div>
+<section class="content bg-light">
+    <div class="container">
+        <div class="headempself">
+            <h3>Employee Id Number</h3>
+        </div>
+        <div class="box box-default">
+            
+            <fieldset>
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Employee Id Number</p>
+                            </div>
+
+                            
+                        </label>
+                    </div>
+                </legend>
+                <form action="">
+                    <!-- 1 -->
+                    <div class="row  mt-5">
+                        <div class="col-md-4">
+                            <label for="">PAN No</label>
+                            <input type="text" name="text" class="form-" required=""  class="form-control" placeholder="QWERTY1234M" formControlName="PAN" aria-invalid="false">
+                        </div>
+                        <div class="col-md-4">
+                            <label>AADHAAR Ref No </label>
+                            <input type="text" name="text" class="form-control" required="" aria-invalid="false" disabled> 
+                        </div>
+                        <div class="col-md-4">
+                            <label>GRP/Pran Type <span class="text-red">*</span> </label>
+                            <input type="text" name="text" class="form-control" disabled required="" data-validation-required-message="This field is required" aria-invalid="false"> </div>	
+                    </div>
+                    <!-- 2 -->
+                    <div class="row  mt-5">
+                        <div class="col-md-4">
+                            <label for="">State Insurance Number <span class="text-red">*</span> </label>
+                            <input type="number" name="number" class="form-control" disabled   aria-invalid="false"> </div>
+                            <div class="col-md-4">
+                                <label for="">RGSH No: <span class="text-red">*</span> </label>
+                                <input type="number" name="number" class="form-control" disabled   aria-invalid="false"> </div>
+                            <div class="col-md-4">
+                                    <label>Appointment Order No. <span class="text-red">*</span> </label>
+                                    <input type="text" name="text" class="form-control"   aria-invalid="false"> </div>	
+                        
+                    </div>
+                    <!-- 3 -->
+                    
+                </form>
+                <div class="Row" style="text-align: center;">
+                    <button  class="btn btn-success margin w-170" routerLink="/EmpMstComponent">Back</button>
+                    <button class="btn btn-success margin w-170" routerLink="/EmpDateComponent">Next</button>
+                </div>
+            </fieldset>
+            <div class="Row" style="text-align: center;">
+                <button class="btn btn-primary margin-2 w-170">Save</button>
+                <button class="btn btn-warning margin w-170">Refresh</button>
+                <button class="btn btn-info margin-2 w-170">Modify</button>
+            </div>
+            <app-emp-gen-detail></app-emp-gen-detail>
+
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

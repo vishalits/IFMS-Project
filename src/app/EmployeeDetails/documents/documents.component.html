@@ -1,0 +1,91 @@
+<app-header></app-header>
+<div class="content-wrapper">
+	<nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+		<ol _ngcontent-usv-c162="" class="breadcrumb">
+			<li _ngcontent-usv-c162="" class="breadcrumb-item"> <i _ngcontent-usv-c162=""
+					class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a _ngcontent-usv-c162=""
+					routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a> </li>
+			<li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162="" routerlink="/main"
+					ng-reflect-router-link="/main" href="/main">Menu</a> </li>
+			<li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+				Employe Detailes</li>
+		</ol>
+	</nav>
+	<section class="content">
+		<div class="container">
+			<div class="box box-default">
+				<div class="box-header with-border">
+					<div>
+						<fieldset>
+							<legend>
+								<div class="Row" style="padding-top: 10px;">
+									<label class="p-5 bg-light-blue" style=" font-weight: bold;">
+										<div class="section-title">
+											<p>Documents</p>
+										</div>
+									</label>
+								</div>
+							</legend>
+
+							<form [formGroup]="EmpDocument">
+								<div class="Row">
+									<table class="table table-border">
+										<thead>
+											<tr>
+												<th>Sr no</th>
+												<th>Documents Types</th>
+												<th>Description</th>
+												<th>Choose File</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>1</td>
+												<td>
+													<select class="form-control form-select" formControlName="documennt">
+														<option *ngFor="let mst of DocumentTypedata" value={{mst.DOC_TYPE_ID}}>
+														  {{mst.TYPE_NAME}}
+														</option>
+													  </select>
+												</td>
+												<td>
+													<input class="form-control" placeholder="Description" formControlName="Description" />
+												</td>
+
+												<td>
+													<input type="file" class="form-control" formControlName="file" />
+												</td>
+												<td>
+													<button class="btn-info">Add</button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</form>
+							<div class="Row" style="text-align: center;">
+								<button type="submit" class="btn btn-info btn-flat margin w-100"  (click)="OnSubmit()">Save</button>
+								<button type="reset" class="btn btn-success btn-flat margin w-100"
+									onclick="reset">Next</button>
+							</div>
+						</fieldset>
+					</div>
+					<div class="Row col-12" style=" text-align: center;">
+						<button class="btn btn-primary margin w-170 btnclr " (click)="ComponetLoad('employee-details') ">Employee Personal Details</button>
+						<button type="button" class="btn btn-primary margin-2 w-170 btnclr" (click)="ComponetLoad('employeeIdentification')">Employee Identification</button>
+						<button  class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('EmployeeService')">Employee-Service-Details</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('address')"> Address</button>
+						<button class="btn btn-primary margin-2 w-120 btnclr" (click)="ComponetLoad('familyDetails')">Family Details</button>
+						<button  class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('bank-details')">Bank Details</button>
+						<button  class="btn btn-primary margin-2 w-120 btnclr" (click)="ComponetLoad('pay-entitlement')">Pay Entitlement</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('document')">Documents</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('EmpDate')">Employee Dates</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<app-footer></app-footer>

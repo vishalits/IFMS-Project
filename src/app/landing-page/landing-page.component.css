@@ -1,0 +1,80 @@
+.scroll-message  {
+    width: 100%;
+    padding: 9px 10px 6px 10px;
+    /* background: linear-gradient(68deg, #2471BC 45%, rgb(255, 245, 245)); */
+    display: inline-block;
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+}
+
+.brand-content.wow.fadeIn.animated.yellow {
+    background: rgb(35,30,96);
+    /* background: linear-gradient(90deg, rgba(35,30,96,1) 0%, rgba(21,74,126,1) 45%, rgba(53,132,207,1) 100%); */
+    background: linear-gradient(90deg, hsla(195, 46%, 95%, 1) 0%, hsla(231, 9%, 85%, 1) 100%);
+    box-shadow: 5px 5px 10px #dbdada;
+    border: 2px solid #D5D6DC;
+    padding: 0 0 200px 0;
+}
+
+.justify-content-between {
+    justify-content: space-between!important;
+}
+section#contact {
+    margin-bottom: 25px !important;
+    padding-top: 30px;
+}
+
+.media-body.txt {
+    width: 100%;
+    float: left;
+    padding: 16px;
+    text-align: left;
+    /* overflow: auto; */
+    white-space: nowrap;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+    height: 250px;
+}
+
+.features .icon-box {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #f5f5ff;
+    transition: ease-in-out 0.3s;
+}
+.features .icon-box:hover {
+    background: #ebebff;
+}
+.col-lg-12.col-md-12.mb-1 .icon-box.aos-init {
+    padding: 5px 10px;
+}
+.features .icon-box h4 a:hover {
+    color: #01036f;
+}
+.features h4 {
+    color:  #fff;
+    text-align: center;
+
+}
+
+.features .icon-box h3 {
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 16px;
+}
+
+.features .icon-box i {
+    font-size: 28px;
+    padding-right: 10px;
+    line-height: 1;
+    color: #5578ff;
+}
+
+.features .icon-box h3 a {
+    color: #010483;
+    transition: ease-in-out 0.3s;
+}

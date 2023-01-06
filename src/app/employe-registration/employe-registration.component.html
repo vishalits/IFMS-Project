@@ -1,0 +1,491 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+<!-- <app-sidebar></app-sidebar> -->
+<div class="content-wrapper ">
+
+
+  <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+    <ol _ngcontent-usv-c162="" class="breadcrumb">
+      <li _ngcontent-usv-c162="" class="breadcrumb-item">
+        <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+          _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+      </li>
+      <li _ngcontent-usv-c162="" class="breadcrumb-item">
+        <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+      </li>
+      <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">Send Data
+      </li>
+    </ol>
+  </nav>
+
+  <section class="content bg-light">
+
+    <div class="container">
+      <div class="box box-default">
+        <fieldset>
+          <legend>
+            <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+              <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                <div class="section-title">
+                  <p>Employee Basic Information</p>
+                </div>
+
+
+              </label>
+            </div>
+          </legend>
+
+          <form [formGroup]="EmpRegistration" (ngSubmit)="onSubmit()">
+            <div class="row m-2 pb-5">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <!-- <form> -->
+                  <div class="form-check form-check-inline">
+
+                    <input class="form-check-input" type="radio" checked>
+                    <!-- {{checked}} -->
+                    <label class="form-check-label" for="radioOra" ngModel>
+                      <label class="form-check-label" for="inlineRadio1">JanAadhar Number</label>
+                    </label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option2">
+                    <label class="form-check-label" checked="checked" for="inlineRadio2">Aadhaar Number</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" value="option3">
+                    <label class="form-check-label" for="inlineRadio3">Mobile Number</label>
+                  </div>
+                  <br>
+
+                  <input type="text" [(ngModel)]="JanAadharId" formControlName="JanadharInfodata"
+                    name="JanadharInfodata" id="JanadharInfodata" class="form-control bg-white mt-5"
+                    placeholder="Search..." maxlength="10" (keypress)="numberOnly($event)" style="width: 92%;"
+                    (click)="onClicked(true)">
+
+                  <!-- <button type="button" (click)="onClicked(true)" class="btn btn-block btn-dark">
+                        Consegna adesso
+                      </button> -->
+
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-flat bg-blue" (click)="getJanAadhar()">
+                      <i class="fa fa-search "></i>
+                    </button>
+                  </span>
+                  <br>
+                  <span id="sptxt" class="text-danger"></span>
+                  <!-- </form> -->
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                <label>Select Employee</label>
+                <select class="form-control" (change)="updateSorting($event)" formControlName="MemberID"
+                  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['MemberID'].errors}">
+                  <option value="">--Select Person--</option>
+                  <option *ngFor="let mst of JanadharInfodata" value={{mst.janMid}} [disabled]="mst.age <=18">
+                    {{mst.nameEng}}&nbsp; &nbsp;
+                    <span class="mr-3">{{mst.janMid}}</span> &nbsp; &nbsp;, &nbsp; &nbsp;<b
+                      class="mr-3 font-weight-bold">{{mst.age
+                      }} </b>
+
+                  </option>
+                </select>
+                <div *ngIf="submitted && EmpRegistration.controls['MemberID'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['MemberID'].errors['required']">
+                    Please Select Employee
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+
+            <div class="row m-2 pt-5">
+              <div class="col-md-4">
+                <label>Empolyee Type </label>
+                <select formControlName="employeeType" class="form-control form-select"
+                  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['employeeType'].errors}">
+                  <option *ngFor="let mst of EmployeeTypedata" value={{mst.STATUS_ID}}>
+                    {{mst.STATUS_NAME}}
+                  </option>
+                </select>
+
+
+                <div *ngIf="submitted && EmpRegistration.controls['employeeType'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['employeeType'].errors['required']">
+                    Please Select Employee
+                  </div>
+                </div>
+
+                
+              </div>
+
+             
+
+
+              <div class="col-md-4">
+                <label>Service Category</label>
+                <select class="form-control form-select" (change)="getSubServiceCategory($event)"
+                  formControlName="service_Category"
+                  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['service_Category'].errors}">
+                  <option *ngFor="let mst of ServiceCategorygdata" value={{mst.SRVC_CAT_ID}}>
+                    {{mst.SRVC_CAT_NAME_EN }}
+                  </option>
+                </select>
+                <div *ngIf="submitted && EmpRegistration.controls['employeeType'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['employeeType'].errors['required']">
+                    Please Select Service Category
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-4">
+                <label> Sub Service Category / Code</label>
+                <select class="form-select" class="form-control" formControlName="serviceSub_Category"
+                  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['serviceSub_Category'].errors}">
+                  
+                  <option *ngFor="let mst of SubServiceCategorydata" value={{mst.SRVC_SUBCAT_ID}}>
+                    {{mst.SUB_SRVC_CAT_NAME_EN }}
+                  </option>
+                </select>
+
+                <div *ngIf="submitted && EmpRegistration.controls['serviceSub_Category'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['serviceSub_Category'].errors['required']">
+                    Please Select Service Category /Code
+                  </div>
+                </div>
+                
+              </div>
+
+            </div>
+            <!-- employee modify -->
+
+            <div class="row m-2 mt-5">
+
+
+              <div class="col-md-4">
+                <label> Name <span class="text-red">*</span>
+                </label>
+                <input type="text" name="text" class="form-control" pattern="[a-zA-Z ]*"
+                  value="{{selectedRecord.nameEng}}" formControlName="Name"
+                  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['Name'].errors}">
+
+                <div *ngIf="submitted && EmpRegistration.controls['Name'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['Name'].errors['required']">
+                    Please Enter First Name
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="col-md-4">
+                <label for="">Date of Birth <span class="text-red">*</span>
+                </label>
+                <input name="date" class="form-control" value="{{selectedRecord.dob }}" formControlName="dob"
+                  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['dob'].errors}" />
+                <div *ngIf="submitted && EmpRegistration.controls['dob'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['dob'].errors['required']">
+                    Please Enter Date of Birth
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-md-4">
+                <label>Father Name </label>
+                <input type="text"  formControlName="fname" class="form-control" value="{{selectedRecord.fnameEng}}" [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['fname'].errors}" >
+                <div *ngIf="submitted && EmpRegistration.controls['fname'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['fname'].errors['required']">
+                    Please Enter Father Name
+                  </div>
+                </div>
+             
+              </div>
+            </div>
+            <!-- end -->
+            <div class="row m-2 mt-5">
+              <div class="col-md-4">
+                <label for="">Mother Name </label>
+                <input type="text"  formControlName="mname" class="form-control" value="{{selectedRecord.mnameEng}}" [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['mname'].errors}" >
+                <div *ngIf="submitted && EmpRegistration.controls['mname'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['mname'].errors['required']">
+                    Please Enter Mother Name
+                  </div>
+                  </div>
+            
+              </div>
+
+              <div class="col-md-4">
+                <label for="">Appointment Order No. <span class="text-red">*</span>
+                </label>
+                <input type="text" name="text" class="form-control" required="" formControlName="AppointmentOrder"
+                  (keypress)="keyPressAlphaNumericWithCharacters($event)" maxlength="10"
+                  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['AppointmentOrder'].errors}" />
+                <div *ngIf="submitted && EmpRegistration.controls['AppointmentOrder'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['AppointmentOrder'].errors['required']">
+                    Please Enter Appointment Order
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 ">
+
+                
+              
+                <label for="appt">Appointment Date <span class="text-red">*</span></label>
+
+                <div>
+                  <input class="form-control" matInput [matDatepicker]="picker2" 
+                   placeholder="DD/MM/YYYY"formControlName="dob" readonly="" [max]="getToday()" (change)="disableDate()" [min]="getMinDate()"   formControlName="Appointmentdate" value="{{selectedRecord.nameEng}}"  
+                   [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['Appointmentdate'].errors}">
+                  <mat-datepicker-toggle matSuffix [for]="picker2" ></mat-datepicker-toggle>
+                  <mat-datepicker #picker2 class="mat-piker"></mat-datepicker>
+                  <div *ngIf="submitted && EmpRegistration.controls['Appointmentdate'].errors" class="text-danger">
+                    <div *ngIf="submitted && EmpRegistration.controls['Appointmentdate'].errors['required']">
+                      Please Enter Date
+                    </div>
+                  </div>
+              </div>
+
+              
+                <!-- <div class="input-group">
+
+
+                <input type="date" value="" id="appt" name="appt"  class="form-control"
+                 [max]="getToday()" (change)="disableDate()" [min]="getMinDate()"
+
+                  formControlName="Appointmentdate" value="{{selectedRecord.nameEng}}"  
+                  [ngClass]="{'is-invalid':submitted && EmpRegistration.controls['Appointmentdate'].errors}">
+                </div>
+                 
+
+                <div *ngIf="submitted && EmpRegistration.controls['Appointmentdate'].errors" class="text-danger">
+                  <div *ngIf="submitted && EmpRegistration.controls['Appointmentdate'].errors['required']">
+                    Please Enter Date
+                  </div>
+                </div> -->
+           
+
+
+              </div>
+
+
+
+            </div>
+
+            <!-- 3 -->
+
+
+            <!-- <div class="row m-2 mt-5">
+          
+          <div class="col-md-3">
+            <label>Mobile Number </label>
+            <input type="text" name="text" class="form-control" value="{{selectedRecord.mobile }}" formControlName="mobile_No" pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$" maxlength="10" minlength="10">
+          </div>
+          <div class="col-md-3">
+            <label for="">Addhar Number </label>
+            <input type="text" name="text" class="form-control" value="{{selectedRecord.aadhar }}" formControlName="addhar_no" pattern="(\d{4}\s?){4}" maxlength="12" minlength="12">
+          </div>
+        </div> -->
+            <!-- 2 -->
+            <!-- <div class="Row" style="text-align: center; align-items: center;  padding-top: 20px;">
+          <label class="p-5 bg-light-blue" style="width: 97%; font-weight: bold;">
+            <div class="section-title" >
+              <p>Bank Details</p>
+            </div>
+            <hr>
+          </label>
+        </div> -->
+            <!-- <div class="row m-2 mt-5">
+          <div class="col-md-4">
+            <label>Bank Account Number </label>
+            <input type="text" name="text" class="form-control" formControlName="bankAccountNumber" value="{{selectedRecord.acc}}" maxlength="12" minlength="12" readonly>
+          </div>
+          <div class="col-md-4">
+            <label>Ifsc Code </label>
+            <input type="text" name="text" class="form-control" Disable value="{{selectedRecord.ifsc }}" formControlName="IfscCode" readonly>
+          </div>
+          <div class="col-md-4">
+            <label>Bank Name</label>
+            <input type="text" class="form-control" Disable value="{{selectedRecord.bankName }}" formControlName="BankName" readonly>
+          </div>
+        </div> -->
+            <!-- 2 -->
+            <!-- <div class="row m-2 mt-5">
+          <div class="col-md-4">
+            <label>Branch Name </label>
+            <input type="text" class="form-control" Disable value="{{selectedRecord.bankBranch }}" formControlName="BranchName" readonly>
+          </div>
+        </div> -->
+
+
+
+            <div class="Row mr-3" style="text-align: center;">
+              <button type="submit" class="btn btn-info btn-flat margin w-100" action="save">Save As Draft</button>
+            </div>
+            <!-- 2 Doucment Details  -->
+
+            <fieldset>
+              <legend>
+                <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                  <label class="p-5 bg-light-blue" style="font-weight: bold;">
+                    <div class="section-title">
+                      <p>Document</p>
+                    </div>
+
+                  </label>
+                </div>
+
+
+              </legend>
+
+              <div class="row m-2 mt-5">
+                <div class="col-md-4">
+                  <label for="">Description
+                    <span class="text-red">*</span>
+                  </label>
+                  <select class="form-control form-select" formControlName="Description" id="Description">
+                    <option *ngFor="let mst of DocumentTypedata" value={{mst.DOC_TYPE_ID}}>
+                      {{mst.TYPE_NAME}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="">Add Document</label>
+                  <input type="file" class="form-control p-1" formControlName="file" id="file"
+                    (change)="onFileChange($event)" maxFileSize="50000">
+                  <!-- <input type="file" id="file" multiple 
+                  (change)="getFileDetails($event)" > -->
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group button-top">
+                    <button type="button" class="btn btn-info" [disabled]="isLoading"><i class="fa"
+                        [ngClass]="{'fa fa-spin fa fa-spinner': isLoading}"></i> &nbsp; Upload</button>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group button-top">
+                    <button type="button" class="btn btn-success"><i class="fa fa-plus"></i> Add File</button>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+
+              <!-- add show data in  table  -->
+              <!-- <div class="row m-2 mt-5">
+                <div class="col-md-12">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                      <thead class="bg-light-blue">
+                        <tr>
+                          <th>Sr.No.</th>
+                          <th>File Name</th>
+                          <th>Description</th>
+
+                          <th>View</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1.</td>
+                          <td>Appointment.pdf</td>
+                          <td>Appointment Letter</td>
+                          <td><a href="#">Download</a></td>
+                          <td> {{fileName}}</td>
+                          
+                          <td>
+                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalview">
+                            <i class="fa fa-eye"></i>
+                          </button>
+                         
+                          <div class="modal fade" id="exampleModalview" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h3 class="modal-title" id="exampleModalLabel">View Doucment</h3>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                <div>
+                                  <p> {{fileData}}</p>
+
+                                  
+                                </div>
+                                
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td> 
+                          <td>
+                            <button type="button" class="btn btn-danger">
+                              <i class="fa fa-trash-o"></i>
+                            </button>
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div> -->
+            </fieldset>
+
+            <div class="row m-2  pb-5">
+
+              <div class="col-md-2">
+                <label>Assigened to <span class="text-red">*</span></label>
+              </div>
+              <div class="col-md-6">
+                <select aria-label="Default select example" class="form-control form-select" formControlName="assigened"
+                  id="assigened">
+                  <option value="">--Please Select Assigened--</option>
+                  <option value="-1">Assigened</option>
+                </select>
+              </div>
+            </div>
+            <div class="row m-2 pb-5">
+              <div class="col-md-2">
+                <label for=""> Remark <span class="text-red">*</span></label>
+              </div>
+              <div class="col-md-6">
+                <textarea class="form-control" formControlName="remark" id="remark" rows="1"></textarea>
+              </div>
+            </div>
+            <div class="button-tops">
+              <button type="button" class="btn btn-info btn-flat margin w-100" (click)="finalsubmit()">Save</button>
+              <button type="button" class="btn btn-success btn-flat margin w-100">Submit</button>
+              <button type="button" class="btn btn-danger btn-flat margin w-100" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+          <!-- validation in required -->
+          <!-- first name -->
+          <div>
+
+            <!-- validation in end -->
+          </div>
+        </fieldset>
+        <!-- 3 step -->
+      </div>
+    </div>
+  </section>
+</div>
+<!-- modal -->
+<!-- Button trigger modal -->
+
+<app-footer></app-footer>

@@ -1,0 +1,78 @@
+.scrool-message {
+    width: 100%;
+    padding: 9px 10px 6px 10px;
+    background: linear-gradient(68deg, rgba(255, 255, 255, 1) -36%, rgba(223, 151, 5, 1) 11%, rgba(245, 237, 70, 1) 100%);
+    display: inline-block;
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+}
+
+.brand-content.wow.fadeIn.animated.yellow {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(68deg, rgba(255, 255, 255, 1) -36%, rgba(223, 151, 5, 1) 11%, rgba(245, 237, 70, 1) 100%);
+    padding: 0 0 200px 0;
+}
+
+.justify-content-between {
+    justify-content: space-between!important;
+}
+section#contact {
+    margin-bottom: 25px !important;
+    padding-top: 30px;
+}
+
+.media-body.txt {
+    width: 100%;
+    float: left;
+    padding: 16px;
+    text-align: left;
+    /* overflow: auto; */
+    white-space: nowrap;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+    height: 250px;
+}
+
+.features .icon-box {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #f5f5ff;
+    transition: ease-in-out 0.3s;
+}
+.features .icon-box:hover {
+    background: #ebebff;
+}
+.col-lg-12.col-md-12.mb-1 .icon-box.aos-init {
+    padding: 5px 10px;
+}
+.features .icon-box h4 a:hover {
+    color: #01036f;
+}
+.features h4 {
+    color:  #01036f;
+
+}
+
+
+.features .icon-box h3 {
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-size: 16px;
+}
+
+.features .icon-box i {
+    font-size: 28px;
+    padding-right: 10px;
+    line-height: 1;
+    color: #5578ff;
+}
+
+
+.features .icon-box h3 a {
+    color: #010483;
+    transition: ease-in-out 0.3s;
+}

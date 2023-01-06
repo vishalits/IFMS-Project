@@ -1,0 +1,130 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+
+
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+                    _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+            </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Send Data
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<section class="content bg-light">
+    <div class="container">
+        <div class="box box-default">
+            
+            <fieldset style="border-color:#2471BC ;">
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Update Other Number</p>
+                            </div>
+                        </label>
+                    </div>
+                </legend>
+                <form [formGroup]="updateNumber" (ngSubmit)="onSubmit()">
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <label>Employee Name <span class="text-red">*</span></label>
+                            <input type="text" class="form-control" formControlName="employeeName" name="employeeName">
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-4">
+                            <label>Belt No.</label>
+                            <input type="text" class="form-control" formControlName="beltNo" name="beltNo">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Sipolicy No. </label>
+                            <input type="text" class="form-control" formControlName="siPolicyNo" name="siPolicyNo">
+                        </div>
+                        <div class="col-md-4">
+                            <label>CPF No. </label>
+                            <input type="text" class="form-control" formControlName="cpfNo" name="cpfNo">
+                        </div>
+                    </div>
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-4">
+                            <label>CPENF No.</label>
+                            <input type="text" class="form-control" formControlName="cpenfNo" name="cpenfNo">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Mobile No. </label>
+                            <input type="text" class="form-control" formControlName="mobileNo" name="mobileNo">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Pran No. </label>
+                            <input type="text" class="form-control" formControlName="parnNo" name="parnNo">
+                        </div>
+                    </div>
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-4">
+                            <label>Pil No.</label>
+                            <input type="text" class="form-control" formControlName="pilNo" name="pilNo">
+                        </div>
+                        <div class="col-md-4">
+                            <label>lascpnf No. </label>
+                            <input type="text" class="form-control" formControlName="lascpenfNo" name="lascpenfNo">
+                        </div>
+                        <div class="col-md-4">
+                            
+                        </div>
+                    </div>
+                    
+                    
+
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center;">
+                                <button class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                </form>
+
+
+                <!-- table -->
+                <table class="table" style="margin-top: 40px ;">
+                    <thead class="thead-primary">
+                      <tr>
+                        <th scope="col">EmployeeId</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">123</th>
+                        <td>John</td>
+                        <td>XYZ</td>
+                        <td>HOD Approved</td>
+                        <td>demo</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- table-end -->
+
+                  
+            </fieldset>
+            <app-essbutton></app-essbutton>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
+
+

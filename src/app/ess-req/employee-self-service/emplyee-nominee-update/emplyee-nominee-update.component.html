@@ -1,0 +1,112 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+
+
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+                    _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+            </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Send Data
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<section class="content bg-light">
+    <div class="container">
+        <div class="box box-default">
+            
+            <fieldset style="border-color:#2471BC ;">
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Employee Nominee Update</p>
+                            </div>
+                        </label>
+                    </div>
+                </legend>
+                <form [formGroup]="updateNominee" (ngSubmit)="onSubmit()">
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-4">
+                            <label>Scheme Name <span class="text-red">*</span></label>
+                            <select name="schemename" id="#" class="form-control" formControlName="schemeName">
+                                <option *ngFor="let mst of GetSchemeData" value={{mst.SCH_NOM_ID}}> {{mst.SCH_NOM_NAME_EN}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Nomination Name <span class="text-red">*</span></label>
+                            <select name="nominationname" id="#" class="form-control" formControlName="nominationName">
+                                <option *ngFor="let mst of GetSchemeData" value={{mst.SCH_NOM_ID}}> {{mst.SCH_NOM_NAME_EN}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Relation Name <span class="text-red">*</span></label>
+                            <select name="type" id="type" class="form-control" formControlName="relationName">
+                                <option *ngFor="let mst of FamilyRelation" value={{mst.RELATION_ID}}> {{mst.R_NAME_EN}} </option>
+                                
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row m-2 pb-5">
+                            <div class="col-md-4">
+                                <label>Percentage Share</label>
+                                <input type="text" class="form-control" name="percentShare" formControlName="percentShare">
+                            </div>
+                            <div class="col-md-4">
+                                <label>Select File<span class="text-red"> *File Extension .pdf or File Size less than 5MB.</span></label>
+                                <input type="file" class="form-control p-1" formControlName="file" id="file"
+                                (change)="onFileChange($event)" maxFileSize="50000">
+                            </div>
+                            <div class="col-md-4">   
+                            </div>
+                        </div>
+
+                        <div class="row m-2 pb-5">
+                            <div class="col-md-12" style="text-align: center;">
+                                <button class="btn btn-primary">Update</button>
+                            </div>
+                        </div>
+                </form>
+
+
+                <!-- table -->
+                <table class="table" style="margin-top: 40px ;">
+                    <thead class="thead-primary">
+                      <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Nominee</th>
+                        <th scope="col">Relation</th>
+                        <th scope="col">Percent</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>demo</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- table-end -->
+
+             
+            </fieldset>
+            <app-essbutton></app-essbutton>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
+

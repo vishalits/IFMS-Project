@@ -1,0 +1,423 @@
+<app-header></app-header>
+<div class="content-wrapper">
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item"> <i _ngcontent-usv-c162=""
+                    class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a _ngcontent-usv-c162=""
+                    routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a> </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162="" routerlink="/main"
+                    ng-reflect-router-link="/main" href="/main">Menu</a> </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Pay Entitlement</li>
+        </ol>
+    </nav>
+    <section class="content">
+        <div class="container">
+            <div class="box box-default">
+                <div class="box-header with-border">
+                    <div>
+                        <fieldset>
+                            <legend>
+                                <div class="Row" style="padding-top: 10px;">
+                                    <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                                        <div class="section-title">
+                                            <p>Pay Entitlement</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </legend>
+                            <form  [formGroup]="PayEntitlement">
+                                <!-- 1 -->
+                                <div class="row  mt-5">
+                                    <div class="col-md-3">
+                                        <label>Service Category </label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" (change)="getSubServiceCategory($event)"
+                                            formControlName="service_Category">
+                                            <option *ngFor="let mst of getServiceCategoryeData"
+                                                value={{mst.SRVC_CAT_ID}}> {{mst.SRVC_CAT_NAME_EN}} </option>
+                                        </select>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label>Sub Service Category </label>
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <select class="form-select" class="form-control"
+                                        formControlName="serviceSub_Category">
+                                        <option *ngFor="let mst of SubServiceCategorydata"
+                                            value={{mst.SRVC_SUBCAT_ID}}>
+                                            {{mst.SUB_SRVC_CAT_NAME_EN }}
+                                        </option>
+                                    </select>
+                                    </div>
+                                   
+
+
+
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-md-3">
+                                        <label>Designation</label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <!-- <select class="form-select" aria-label="Default select example"
+                                            class="form-control" formControlName="Designation">
+                                            <option *ngFor="let mst of Designationdata" value={{mst.DESG_ID}}>{{mst.DESG_DESC_EN}}</option>
+                                          
+                                        </select> -->
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Pay Commission </label>
+
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <select class="form-select" aria-label="Default select example"class="form-control" id="" formControlName="Commission">
+                                            <option *ngFor="let mst of PayCommisiondata" value={{mst.PAY_COMMISION_ID}}>{{mst.PAY_COMM_NAME_EN}}</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+                                <!-- 2 -->
+                                <div class="row mt-5">
+
+
+
+                                    <div class="col-md-3">
+                                        <label>7Th Pay Opted date</label>
+
+                                    </div>
+
+                                    <div class="col-md-3">
+
+                                        <input type="date" name="odate" class="form-control" formControlName="odate"
+                                            required="" aria-invalid="false">
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label>Entry in existing Pay Band/Grade Pay</label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <input type="date" name="gdate" class="form-control" formControlName="gdate"
+                                            required="" aria-invalid="false">
+                                    </div>
+
+                                </div>
+
+
+                                <!-- 3 -->
+                                <div class="row mt-5">
+                                    <div class="col-md-3">
+                                        <label>Pay Band Scale
+                                        </label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" id="">
+
+                                            <!-- <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                                                {{mst.SRVC_CAT_CD_NAME_EN}}
+                                            </option> -->
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="">Grade Pay</label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" id="">
+
+                                            <!-- <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                        {{mst.SRVC_CAT_CD_NAME_EN}}
+                    </option> -->
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                        </select>
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-md-3">
+                                        <label for="">Basic Pay</label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" id="">
+
+                                            <!-- <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                        {{mst.SRVC_CAT_CD_NAME_EN}}
+                    </option> -->
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                            <option value="">1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- 4 -->
+                                <div class="row mt-5">
+                                    <div class="col-md-3">
+                                        <label>HoA
+                                        </label>
+
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <input type="text" name="HoA" class="form-control" formControlName="HoA"
+                                            required="" aria-invalid="false">
+
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label for="">DA Rate</label>
+
+                                    </div>
+
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" formControlName="Darate">
+
+                                            <option *ngFor="let mst of DAdata" value={{mst.DA_RATE_ID}}>{{mst.DA_RATE}}</option>
+                                        
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <!-- 5 -->
+                                <div class="row mt-5">
+                                    <div class="col-md-3">
+                                        <label for="">Govt Quarter</label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" id="">
+
+                                            <!-- <option *ngFor="let mst of getServiceCategoryeData" value={{mst.SRVC_CAT_ID}}>
+                            {{mst.SRVC_CAT_CD_NAME_EN}}
+                        </option> -->
+                                            
+                                        </select>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <label>HRA Rate
+                                        </label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" formControlName="HRAData">
+
+                                            <option *ngFor="let mst of HRAData" value={{mst.CITY_CLASS_ID}}>{{mst.RATE}}</option>
+
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <!-- filedset -->
+
+                                <fieldset>
+                                    <legend>
+                                        <div class="Row" style="padding-top: 10px;">
+                                            <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                                                <div class="section-title">
+                                                    <p>Group Name Details</p>
+                                                </div>
+                                            </label>
+
+                                        </div>
+
+                                    </legend>
+
+
+
+                                    <fieldset>
+                                        <legend>
+
+                                            <div class="Row" style="padding-top: 10px;">
+                                                <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                                                    <div class="section-title">
+                                                        <p>Earning & Deduction Details</p>
+                                                    </div>
+                                                </label>
+
+                                            </div>
+
+                                        </legend>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Earning Component</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Sr.No.</th>
+                                                            <th>Pay Head Name</th>
+                                                            <th>Pay Head Value</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>Basic Pay/Band Pay</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>Grade Pay</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>Dearness Allowance</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4</td>
+                                                            <td>House Rent Allowance</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <a routerLink=""><u>Add Component</u></a>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Deduction Component</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Sr.No.</th>
+                                                            <th>Pay Head Name</th>
+                                                            <th>Pay Head Value</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>GPF</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2</td>
+                                                            <td>NPS Employee Contribution</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3</td>
+                                                            <td>SI</td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>4</td>
+                                                            <td>Income Tax</td>
+                                                            <td></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <a routerLink="">Add Component</a>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row mt-2">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th scope="col">Net Earning</th>
+                                                        <th scope="col">Net Deduction</th>
+                                                        <th scope="col">Net Salary</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+
+
+                                                    </tr>
+                                                    <tr>
+
+
+                                                    </tr>
+                                                    <tr>
+
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                    </fieldset>
+
+                                </fieldset>
+
+                            </form>
+                            <div class="Row" style="text-align: center;">
+                                <button type="submit" class="btn btn-info btn-flat margin w-100">Save</button>
+                                <button type="reset" class="btn btn-success btn-flat margin w-100"
+                                    onclick="reset">Next</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="Row col-12" style=" text-align: center;">
+						<button class="btn btn-primary margin w-170 btnclr " (click)="ComponetLoad('employee-details') ">Employee Personal Details</button>
+						<button type="button" class="btn btn-primary margin-2 w-170 btnclr" (click)="ComponetLoad('employeeIdentification')">Employee Identification</button>
+						<button  class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('EmployeeService')">Employee-Service-Details</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('address')"> Address</button>
+						<button class="btn btn-primary margin-2 w-120 btnclr" (click)="ComponetLoad('familyDetails')">Family Details</button>
+						<button  class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('bank-details')">Bank Details</button>
+						<button  class="btn btn-primary margin-2 w-120 btnclr" (click)="ComponetLoad('pay-entitlement')">Pay Entitlement</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('document')">Documents</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('EmpDate')">Employee Dates</button>
+					</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<app-footer></app-footer>

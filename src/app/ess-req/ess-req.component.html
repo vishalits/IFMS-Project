@@ -1,0 +1,69 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+
+
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+                    _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+            </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Send Data
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<section class="content bg-light">
+    <div class="container">
+        <div class="box box-default" id="ESSReq">
+            
+            <fieldset style="border-color:#2471BC ;">
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Employee Self Service Request</p>
+                            </div>
+                        </label>
+                    </div>
+                </legend>
+                <form action="updatedate">
+                    <div class="row m-2  pb-5">
+                        <div class="col-md-6">
+                            <label>Request Type <span class="text-red">*</span></label>
+                            <select name="Reqtype" id="#" class="form-control" (change)="getESSSubRequestType($event)" name="requestType" >
+                                <option *ngFor="let mst of ESSRequestData" value={{mst.ESS_RQST_TYPE_ID}}> {{mst.ESS_RQST_TYPE_NAME}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Sub Request Type</label>
+                            <select name="SubReqType" id="subreqID" class="form-control" name="subReqType" >
+                                <option *ngFor="let mst of SubReqdata" value={{mst.ESS_SUB_RQST_TYPE_ID}}> {{mst.ESS_SUB_RQST_TYPE_NAME}} </option>
+                            </select>
+                            
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">    
+                        </div>
+                        <div class="col-md-8">
+                            <button type="button" class="btn btn-primary" (click)="loadComponent()"  >Submit</button>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </form>
+            </fieldset>
+            
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
+

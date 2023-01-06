@@ -1,0 +1,533 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+<!-- <app-sidebar></app-sidebar> -->
+<div class="content-wrapper">
+	<!-- <section class="content-header">
+        <h1> Employee Master </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> Home </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="#">Employee Master</a>
+            </li>
+            <li class="breadcrumb-item active">Employee Master</li>
+        </ol>
+
+    </section> -->
+	<nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+		<ol _ngcontent-usv-c162="" class="breadcrumb">
+			<li _ngcontent-usv-c162="" class="breadcrumb-item"> <i _ngcontent-usv-c162=""
+					class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a _ngcontent-usv-c162=""
+					routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a> </li>
+			<li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162="" routerlink="/main"
+					ng-reflect-router-link="/main" href="/main">Menu</a> </li>
+			<li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+				Employe Detailes</li>
+		</ol>
+	</nav>
+
+
+	<section class="content">
+		<div class="container">
+			<div class="box box-default">
+				<div class="box-header with-border">
+					<div>
+						<fieldset>
+							<legend>
+								<div class="Row" style="padding-top: 10px;">
+									<label class="p-5 bg-light-blue" style=" font-weight: bold;">
+										<div class="section-title">
+											<p>Employee Basic Information</p>
+										</div>
+									</label>
+								</div>
+							</legend>
+							<form [formGroup]="EmpPersonalDetail">
+
+								<!-- 1 -->
+								<div class="row">
+									<div class="col-md-3">
+										<label> Name <span class="text-red">*</span> :</label>
+									</div>
+									<div class="col-md-3">
+										<input type="text" name="text" class="form-control" required=""
+											formControlName="name" (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)"  pattern="[a-zA-Z][a-zA-Z ]+"
+											[ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['name'].errors}">
+										<div *ngIf="submitted && EmpPersonalDetail.controls['name'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['name'].errors['required']">
+												Please Enter First Name
+											</div>
+										</div>
+									</div>
+
+
+									<div class="col-md-3">
+										<label>Gender :</label>
+									</div>
+
+									<div class="col-md-3">
+
+										<select class="form-select" class="form-control" formControlName="gender" [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['gender'].errors}" >
+
+											<option *ngFor="let mst of GenderData" value={{mst.GEN_ID}}>
+												{{mst.GEN_NAME_EN}} </option>
+										</select>
+										
+										<div *ngIf="submitted && EmpPersonalDetail.controls['gender'].errors"
+										class="text-danger">
+										<div
+											*ngIf="submitted && EmpPersonalDetail.controls['gender'].errors['required']">
+											Please Enter Date Of Birth
+										</div>
+									</div>
+										
+									</div>
+								
+
+								</div>
+
+								<div class="row mt-5">
+									<div class="col-md-3">
+										<label>Height ( cm ) </label>
+
+									</div>
+									<div class="col-md-3">
+										<input type="text" name="text" class="form-control" 
+											aria-invalid="false" formControlName="height" (keypress)="this.global.numberOnly($event)"  [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['height'].errors}">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['height'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['height'].errors['required']">
+												Please Enter Height ( cm )
+											</div>
+										</div>
+
+									</div>
+
+
+									<div class="col-md-3">
+										<label>Date Of Birth :</label>
+									</div>
+
+									<div class="col-md-3">
+
+										<input type="date" name="text" class="form-control" required=""
+											aria-invalid="false" formControlName="dob" [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['dob'].errors}">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['dob'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['dob'].errors['required']">
+												Please Enter Date Of Birth
+											</div>
+										</div>
+
+									</div>
+
+
+								</div>
+
+
+
+
+
+
+
+								<!-- 2 -->
+								<div class="row mt-5">
+									<div class="col-md-3">
+										<label for="">Identification Marks <span class="text-red">*</span> :</label>
+
+									</div>
+
+									<div class="col-md-3">
+
+										<input type="text" name="text" class="form-control" (keypress)="keyPressAlphaNumeric($event)" [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['Identification'].errors}"
+											aria-invalid="false" formControlName="Identification">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['Identification'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['Identification'].errors['required']">
+												Please Enter Identification Marks
+											</div>
+										</div>
+									</div>
+
+
+									<div class="col-md-3 ">
+										<label>Marital Status <span class="text-red">*</span> :</label>
+									</div>
+									<div class="col-md-3 ">
+										<select class="form-select" aria-label="Default select example"
+											class="form-control" formControlName="matrial" id="">
+
+											<option *ngFor="let mst of MaritalStatusdata" value={{mst.M_STATUS_ID}}>
+												{{mst.M_STATUS_NAME}} </option>
+
+
+										</select>
+										<div *ngIf="submitted && EmpPersonalDetail.controls['matrial'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['matrial'].errors['required']">
+												Please Enter Identification Marks
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="row mt-5">
+									<div class="col-md-3 ">
+										<label for="">Blood Group :</label>
+
+									</div>
+									<div class="col-md-3 ">
+
+										<select class="form-select" aria-label="Default select example"
+											class="form-control" formControlName="Blood_Group" id="">
+											<option *ngFor="let mst of BloodGroupdata" value={{mst.B_GRP_ID}}>
+												{{mst.B_GRP_NAME}} </option>
+										</select>
+									</div>
+									<div class="col-md-3 ">
+										<label for="">Social Category <span class="text-red">*</span> :</label>
+
+									</div>
+									<div class="col-md-3 ">
+
+										<select class="form-select" aria-label="Default select example"
+											class="form-control" formControlName="CATEGORY_ID">
+											<option *ngFor="let mst of getCasteCategoryData" value={{mst.CATEGORY_ID}}>
+												{{mst.CAT_NAME_EN}} </option>
+										</select>
+									</div>
+								</div>
+
+							
+
+								<div class="row mt-5">
+									<div class="col-md-3">
+										<label>Father Name <span class="text-red">*</span> :</label>
+
+									</div>
+									<div class="col-md-3">
+
+										<input type="text" name="text" class="form-control" required=""
+											aria-invalid="false" formControlName="fname" (keypress)="this.global.keyPressAlphaNumericWithCharactersAlpha($event)"   [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['fname'].errors}">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['fname'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['fname'].errors['required']">
+												Please Enter Father Name
+											</div>
+										</div>
+									</div>
+
+									<div class="col-md-3">
+										<label for="">Mother Name :</label>
+
+									</div>
+
+									<div class="col-md-3">
+
+										<input type="text" name="text" class="form-control" required="" (keypress)=" this.global.keyPressAlphaNumericWithCharactersAlpha($event)" 
+											aria-invalid="false" formControlName="mname"  [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['mname'].errors}">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['mname'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['mname'].errors['required']">
+												Please Enter Mother Name
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="row mt-5">
+									<div class="col-md-3">
+										<label for="">Spouse Name :</label>
+									</div>
+									<div class="col-md-3">
+										<input type="text" name="text" class="form-control" [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['sname'].errors}"
+											aria-invalid="false" formControlName="sname">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['sname'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['sname'].errors['required']">
+												Please Enter Spouse Name
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- 4 -->
+
+								<!-- <div class="Row" style="padding-top: 10px;">
+								<label class="p-5 bg-light-blue" style=" font-weight: bold;">
+									<div class="section-title">
+										<p>Contact Details</p>
+									</div>
+								</label>
+								<hr> 
+                            </div> -->
+
+								<div class="row mt-5">
+									<div class="col-md-3">
+										<label>Mobile No. <span class="text-red">*</span> :</label>
+
+									</div>
+									<div class="col-md-3">
+
+										<input type="text" name="text" class="form-control"
+											aria-invalid="false" formControlName="mobileno" pattern="[6789][0-9]{9}" (keypress)="this.global.numberOnly($event)" maxlength="10"  [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['mobileno'].errors}">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['mobileno'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['mobileno'].errors['required']">
+												Please Enter Mobile Number
+											</div>
+										</div>
+										<!-- <div *ngIf="mobileno.errors?.['required']">
+											This field is required.
+										  </div>
+										<div *ngIf="mobileno.errors?.['maxlength']">
+											this is start 6 7 8 9 in number
+										  </div> -->
+										 
+									</div>
+
+									<div class="col-md-3">
+										<label for="">Email ID :</label>
+
+									</div>
+									<div class="col-md-3">
+
+										<input type="email" name="text" class="form-control" required=""
+											aria-invalid="false" formControlName="emailid" placeholder="your-name@provider.com" [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['emailid'].errors}">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['emailid'].errors"
+											class="text-danger">
+											<div
+												*ngIf="submitted && EmpPersonalDetail.controls['emailid'].errors['required']">
+												Please Enter Email ID 
+											</div>
+
+										</div>
+										<!-- <div *ngIf="emailid.errors?.['maxlength']">
+											This field must have at most 250 characters.
+										  </div> -->
+									</div>
+
+
+
+
+								</div>
+
+								<div class="row mt-5">
+									<div class=" col-md-3 ">
+										<label>Home District <span class="text-red">*</span> :</label>
+									</div>
+									<div class=" col-md-3 ">
+
+										<select class="form-select" aria-label="Default select example"
+											class="form-control" id="" formControlName="district_id">
+											<option *ngFor="let mst of Districtdata" value={{mst.DIST_ID}}>
+												{{mst.DIST_NAME_EN}} </option>
+
+										</select>
+									</div>
+
+									<div class="col-md-3 ">
+										<label>Home Town <span class="text-red">*</span> :</label>
+
+									</div>
+									<div class="col-md-3 ">
+
+
+
+										<select class="form-select form-control" formControlName="Home_Town"
+										[ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['Home_Town'].errors}" >
+										<option value="1">Jaipur</option>
+										<option value="2">Sikar</option>
+										<option value="3">Ajmer</option>
+									   </select>
+									   <div *ngIf="submitted && EmpPersonalDetail.controls['Home_Town'].errors" class="text-danger">
+										<div *ngIf="submitted && EmpPersonalDetail.controls['Home_Town'].errors['required']">
+											Home Town 
+										</div>
+									   </div>
+
+									</div>
+								</div>
+
+
+								<div class="row mt-2">
+									<div class="col-md-3 ">
+										<label>Nationality <span class="text-red">*</span> :</label>
+
+									</div>
+									<div class="col-md-3 ">
+
+										<select class="form-select form-control" formControlName="nationalitys">
+											<option value="Indian" selected>Indian</option>
+									
+										</select>
+									</div>
+
+									<!-- <div class="col-md-3">
+                                        <label for="">PAN :</label>
+                                        
+                                    </div>
+                                    <div class="col-md-3">
+                                        
+                                        <input type="text" name="text" class="form-control" required="" placeholder="QWERTY1234M" formControlName="PAN" aria-invalid="false">
+                                    </div> -->
+								</div>
+
+								<!-- 5 -->
+								<!-- <div class="Row" style="padding-top: 10px;">
+								<label class="p-5 bg-light-blue" style=" font-weight: bold;">
+									<div class="section-title">
+										<p>Academic Details</p>
+									</div>
+								</label>
+								<hr>
+                             </div> -->
+
+
+
+								<div class="row mt-5">
+
+									<div class="col-md-3">
+										<label for="">Belongs to Minority :</label>
+
+									</div>
+									<div class="col-md-3">
+
+										<div class="form-control">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions"
+													id="inlineRadio1" value="option1" formControlName="Belongs_Minority">
+												<label class="form-check-label" for="inlineRadio1">Yes</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions"
+													id="inlineRadio2" value="option2" formControlName="Belongs_Minority">
+												<label class="form-check-label" for="inlineRadio2">No</label>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-3">
+										<label for="">Disability Status :</label>
+
+									</div>
+									<div class="col-md-3">
+
+										<div class="form-control">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions"
+													id="inlineRadio3" value="option3" formControlName="Disability_Status">
+												<label class="form-check-label" for="inlineRadio3">Yes</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input" type="radio" name="inlineRadioOptions"
+													id="inlineRadio4" value="option4" formControlName="Disability_Status">
+												<label class="form-check-label" for="inlineRadio4">No</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- 6 -->
+								<!-- <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 "
+                            style="background-color: lightblue; width: 98%; font-weight: bold;">Disability
+                            Details</label>
+                            
+                    </div> -->
+								<!-- <div class="Row" style="padding-top: 10px;">
+								<label class="p-5 bg-light-blue" style=" font-weight: bold;">
+									<div class="section-title">
+										<p>Disability Details</p>
+									</div>
+								</label>
+								<hr> 
+                            </div> -->
+
+								<div class="row mt-5">
+
+									<div class="col-md-3">
+										<label for="">Type of Disability <span class="text-red">*</span> :</label>
+
+									</div>
+									<div class="col-md-3">
+										<select class="form-select" aria-label="Default select example"
+											class="form-control" formControlName="Disability">
+											<option *ngFor="let mst of DisabilityTypeData" value={{mst.DISABILITY_ID}}>
+												{{mst.DIS_TYPE_EN}} </option>
+										</select>
+									</div>
+
+
+									<div class="col-md-3">
+										<label for="">Percentage of Disability :</label>
+									</div>
+
+									<div class="col-md-3">
+										<input type="text" name="text" class="form-control"
+											aria-invalid="false" formControlName="Percentage_Disability" [ngClass]="{'is-invalid':submitted && EmpPersonalDetail.controls['emailid'].errors}">
+											<div *ngIf="submitted && EmpPersonalDetail.controls['Home_Town'].errors" class="text-danger">
+												<div *ngIf="submitted && EmpPersonalDetail.controls['Home_Town'].errors['required']">
+													Please select Percentage of Disability
+												</div>
+											   </div>
+									</div>
+
+							
+								</div>
+								<div class="row mt-5">
+
+
+								</div>
+								<!-- 7 -->
+								<div class="Row" style="text-align: center;">
+									<button type="submit" class="btn btn-info btn-flat margin w-100"
+										(click)=" onSubmit()">Save</button>
+									<button type="" class="btn btn-success btn-flat margin w-100"
+										onclick="reset">Next</button>
+								</div>
+
+							</form>
+						</fieldset>
+					</div>
+
+					<div class="Row col-12" style=" text-align: center;">
+						<button class="btn btn-primary margin w-170 btnclr "
+							(click)="ComponetLoad('employee-details') ">Employee Personal Details</button>
+						<button type="button" class="btn btn-primary margin-2 w-170 btnclr"
+							(click)="ComponetLoad('employeeIdentification')">Employee Identification</button>
+						<button class="btn btn-primary margin w-170 btnclr"
+							(click)="ComponetLoad('EmployeeService')">Employee-Service-Details</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('address')">
+							Address</button>
+						<button class="btn btn-primary margin-2 w-120 btnclr"
+							(click)="ComponetLoad('familyDetails')">Family Details</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('bank-details')">Bank
+							Details</button>
+						<button class="btn btn-primary margin-2 w-120 btnclr"
+							(click)="ComponetLoad('pay-entitlement')">Pay Entitlement</button>
+						<button class="btn btn-primary margin w-170 btnclr"
+							(click)="ComponetLoad('document')">Documents</button>
+						<button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('EmpDate')">Employee
+							Dates</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<app-footer></app-footer>

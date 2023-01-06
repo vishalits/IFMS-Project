@@ -1,0 +1,82 @@
+<!-- Content Wrapper. Contains page content -->
+<app-header></app-header>
+
+<div class="content-wrapper ">
+
+
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a
+                    _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+            </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item">
+                <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+            </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Bank Details
+            </li>
+        </ol>
+    </nav>
+</div>
+<section class="content bg-light">
+    <div class="container">
+        <div class="headempself">
+            <h3>Employee Bank Account Details</h3>
+        </div>
+        <div class="box box-default">
+            
+            <fieldset>
+                <legend>
+                    <div class="Row" style="text-align: center; align-items: center;  padding-top: 10px;">
+                        <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                            <div class="section-title">
+                                <p>Employee Bank Account Details</p>
+                            </div>
+
+                            
+                        </label>
+                    </div>
+                </legend>
+                <form action="">
+                    <!-- 1 -->
+                    <div class="row  mt-5">
+                        <div class="col-md-3">
+                            <label>Bank Account Number </label>
+                            <input type="text" name="text" class="form-control" required="" data-validation-required-message="This field is required" aria-invalid="false"> </div>
+                        <div class="col-md-3">
+                            <label>Ifsc Code </label>
+                            <input type="text" name="text" class="form-control" required="" data-validation-required-message="This field is required" aria-invalid="false"> </div>
+                        <div class="col-md-3">
+                            <label>Bank Name</label>
+                            <select class="form-select" aria-label="Default select example" (change)="getBankBranch($event)" class="form-control" id="">
+                                <option *ngFor="let mst of BankData" value={{mst.BANK_ID}}> {{mst.BANK_NAME_EN}} </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Branch Name </label>
+                            <select class="form-select" aria-label="Default select example" class="form-control" id="">
+                                <option *ngFor="let mst of BankBranchData" value={{mst.BANK_BRANCH_ID}}> {{mst.BRANCH_NAME_EN}} </option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                </form>
+                <div class="Row" style="text-align: center;">
+                    <div class="Row" style="text-align: center;">
+                        <button  class="btn btn-success margin w-170 btnclr" routerLink="/EmpFamilyDetailComponent">Back</button>
+                        <button class="btn btn-success margin w-170 btnclr"  routerLink="/EmpPayEComponent">Next</button>
+
+                    </div>
+                </div>
+            </fieldset>
+            <div class="Row" style="text-align: center;">
+                <button class="btn btn-primary margin-2 w-170">Save</button>
+                <button class="btn btn-warning margin w-170">Refresh</button>
+                <button class="btn btn-info margin-2 w-170">Modify</button>
+            </div>
+            <app-emp-gen-detail></app-emp-gen-detail>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

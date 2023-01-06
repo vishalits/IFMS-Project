@@ -1,0 +1,317 @@
+<app-header></app-header>
+<div class="content-wrapper">
+    <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+        <ol _ngcontent-usv-c162="" class="breadcrumb">
+            <li _ngcontent-usv-c162="" class="breadcrumb-item"> <i _ngcontent-usv-c162=""
+                    class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a _ngcontent-usv-c162=""
+                    routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a> </li>
+            <li _ngcontent-usv-c162="" class="breadcrumb-item"> <a _ngcontent-usv-c162="" routerlink="/main"
+                    ng-reflect-router-link="/main" href="/main">Menu</a> </li>
+            <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active">
+                Employe Detailes</li>
+        </ol>
+    </nav>
+    <section class="content">
+        <div class="container">
+            <div class="box box-default">
+                <div class="box-header with-border">
+
+                    <div>
+                        <fieldset>
+                            <legend>
+
+                                <div class="Row" style="padding-top: 10px;">
+                                    <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                                        <div class="section-title">
+                                            <p>Family Details</p>
+                                        </div>
+                                    </label>
+                                </div>
+                            </legend>
+                            <form [formGroup]="FamilyDetails">
+
+
+
+                                <div class="Row" style="text-align: center">
+                                    <table class="table table-border">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr no</th>
+                                                <th>Name</th>
+                                                <th>Relationship</th>
+                                                <th>Gender</th>
+                                                <th>Date Of Birth</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr> </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+
+
+                                <div class="row  mt-5">
+                                    <div class="col-md-4">
+                                        <div class="topcheck" style="top: 20px; text-align: left;">
+                                            <div class="form-check p-0">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                                                <label class="form-check-label" for="exampleCheck2">Family Member
+                                                    Details</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- <button class="toggle-button" igxButton="raised" (click)="toggleContent()">Toggle</button> -->
+                                <!-- 1 -->
+
+                                <div class="row mt-5">
+                                    <div class="col-md-3">
+                                        <label>Name </label>
+
+                                    </div>
+
+                                    <div class="col-md-3">
+
+                                        <input type="text" name="text" class="form-control" formControlName="name"
+                                            required="" data-validation-required-message="This field is required"
+                                            aria-invalid="false">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label>Relationship</label>
+
+                                    </div>
+
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" id="">
+                                            <option *ngFor="let mst of FamilyRelationdata" value={{mst.RELATION_ID}}>
+                                                {{mst.R_NAME_EN}} </option>
+                                        </select>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-md-3">
+                                        <label for="">Date of Birth <span class="text-red">*</span> </label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <input type="date" name="date" class="form-control" required=""
+                                            aria-invalid="false">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Gender </label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" id="">
+
+                                            <option *ngFor="let mst of Genderdata" value={{mst.GEN_ID}}>
+                                                {{mst.GEN_NAME_EN}} </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- 2 -->
+                                <div class="row mt-2">
+
+
+                                    <div class="col-md-3">
+                                        <label>Marital Status</label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <select class="form-select" aria-label="Default select example"
+                                            class="form-control" id="">
+
+                                            <option *ngFor="let mst of MaritalStatusdata" value={{mst.M_STATUS_ID}}>
+                                                {{mst.M_STATUS_NAME}} </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="">Physically Disability </label>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-control">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio1" value="option1">
+                                                <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio2" value="option2">
+                                                <label class="form-check-label" for="inlineRadio2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- 2 -->
+                                <div class="row  mt-5">
+
+                                    <div class="col-md-3">
+                                        <label>Percentage Of Disability </label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <input type="text" name="text" class="form-control" required=""
+                                            data-validation-required-message="This field is required"
+                                            aria-invalid="false" disabled>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <label for="">Dependent</label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <div class="form-control">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio3" value="option3">
+                                                <label class="form-check-label" for="inlineRadio3">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio4" value="option4">
+                                                <label class="form-check-label" for="inlineRadio4">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row mt-5">
+                                    <div class="col-md-3">
+                                        <label for="">Employed</label>
+
+                                    </div>
+                                    <div class="col-md-3">
+
+                                        <div class="form-control">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio5" value="option5">
+                                                <label class="form-check-label" for="inlineRadio5">Yes</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                                    id="inlineRadio6" value="option6">
+                                                <label class="form-check-label" for="inlineRadio6">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 3 -->
+                                <div class="row  mt-5"> </div>
+
+                                <div class="Row" style="padding-top: 10px;">
+                                    <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                                        <div class="section-title">
+                                            <p>Nominee Details</p>
+                                        </div>
+                                    </label>
+                                    <hr>
+                                </div>
+
+
+
+                                <div class="Row">
+                                    <table class="table table-border">
+                                        <thead>
+                                            <tr>
+                                                <th>Schemes</th>
+                                                <th>Name of Nominee</th>
+                                                <th>Relation</th>
+                                                <th>share %</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        class="form-control" id="">
+                                                        <option *ngFor="let mst of SchemeTypedata"
+                                                            value={{mst.SCH_NOM_ID}}>
+                                                            {{mst.SCH_NOM_NAME_EN}} </option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" placeholder="Name" />
+                                                </td>
+                                                <td>
+                                                    <select class="form-select" aria-label="Default select example"
+                                                        class="form-control" id="">
+                                                        <option *ngFor="let mst of FamilyRelationdata"
+                                                            value={{mst.RELATION_ID}}>
+                                                            {{mst.R_NAME_EN}} </option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" placeholder="share" />
+                                                </td>
+                                                <td>
+                                                    <button class="btn-info">Add</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                            <div class="Row" style="text-align: center;">
+                                <button type="submit" class="btn btn-info btn-flat margin w-100">Save</button>
+                                <button type="reset" class="btn btn-success btn-flat margin w-100"
+                                    onclick="reset">Next</button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="Row col-12" style=" text-align: center;">
+                        <button class="btn btn-primary margin w-170 btnclr "
+                            (click)="ComponetLoad('employee-details') ">Employee Personal Details</button>
+                        <button type="button" class="btn btn-primary margin-2 w-170 btnclr"
+                            (click)="ComponetLoad('employeeIdentification')">Employee Identification</button>
+                        <button class="btn btn-primary margin w-170 btnclr"
+                            (click)="ComponetLoad('EmployeeService')">Employee-Service-Details</button>
+                        <button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('address')">
+                            Address</button>
+                        <button class="btn btn-primary margin-2 w-120 btnclr"
+                            (click)="ComponetLoad('familyDetails')">Family Details</button>
+                        <button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('bank-details')">Bank
+                            Details</button>
+                        <button class="btn btn-primary margin-2 w-120 btnclr"
+                            (click)="ComponetLoad('pay-entitlement')">Pay Entitlement</button>
+                        <button class="btn btn-primary margin w-170 btnclr"
+                            (click)="ComponetLoad('document')">Documents</button>
+                        <button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('EmpDate')">Employee
+                            Dates</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<app-footer></app-footer>

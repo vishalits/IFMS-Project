@@ -1,0 +1,171 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-horizontal-stepper-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+}
+/* left  icone logo  size */
+span.logo-mini.w-100 {
+    width: 58% !important;
+    height: 0px;
+    align-items: center;
+    left: 22px;
+    position: absolute;;
+}
+
+.mat-horizontal-stepper-wrapper.ng-tns-c93-0.ng-star-inserted {
+    background: #f5f5ff;
+}
+label {
+    font-weight: 400 !important;
+}
+thead.bg-light-blue {
+    background-color: #fffad8;
+}
+tbody {
+    background: #ffff;
+}
+
+.text-centers {
+    text-align: center;
+
+}
+@media only screen and (max-width: 600px) {
+    .text-centers {
+        text-align: center;
+        padding: 0 0px 0 0;
+    }
+  }
+
+
+
+@media only screen and (max-width: 600px) {
+    
+  .mat-horizontal-content-container {
+    overflow: hidden;
+    padding: 0 2px 2px 0px  !important;
+}
+  }
+
+  section.content.bg-light {
+    background-color: #fff !important;
+}
+
+/* table design */
+thead, .mat-table thead {
+    background-color: #fffad8 !important;
+}
+
+.mat-table {
+    background: #fff;
+    width: 100%;
+}
+
+/* breadcrumb */
+li.breadcrumb-item {
+    display: inline-flex;
+    padding: 11px;
+    font-size: 15px;
+    font-weight: 600;
+    list-style: none;
+    text-decoration: none;
+}
+
+.breadcrumb {
+    padding: 0 0.5rem;
+    position: relative;
+    z-index: 99999;
+    background-color: rgba(240, 240, 240, 0.9) !important;
+    display: flow-root !important;
+    margin-bottom: 2em !important;
+    z-index: 0;
+}
+.breadcrumb {
+    margin-bottom: 0px !important;
+    background-color: transparent;
+}
+
+/* inbox */
+.section-title p {
+    margin: 0;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #1a1d94;
+    line-height: 1.4;
+}
+/*  */
+mat-paginator.mat-paginator {
+    margin-bottom: 60px;
+}
+
+
+fieldset {
+    padding: 20px;
+    border: solid 3px lightgray;
+}
+fieldset legend {
+    color: red;
+    width: auto;
+}
+fieldset .mat-form-field {
+    padding: 40px 0;
+}
+
+.headempself h3{
+    color: #fff;
+}
+
+
+.btn-primary:not(:disabled):not(.disabled).active, .show >  {
+    color: #fff;
+    background-color: #231e60;
+    border-color: #231e60;
+}
+
+
+
+.mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 100%;
+}
+
+
+.mat-icon-button {
+    
+    float: right;
+}
+.mat-icon-button {
+    padding: 0;
+    min-width: 0;
+    flex-shrink: 0;
+    line-height: 40px;
+    border-style: none !important;
+    margin-top: -38px !important;
+    border-radius: 100% !important;
+}
+button:focus {
+    outline: 0px dotted !important;
+    outline: 0px auto !important;
+}
+.mat-calendar-previous-button, .mat-calendar-next-button {
+    position: relative;
+    top: 40px;
+}
+

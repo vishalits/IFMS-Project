@@ -1,0 +1,101 @@
+<app-header></app-header>
+<div class="content-wrapper">
+  <nav _ngcontent-usv-c162="" aria-label="breadcrumb">
+    <ol _ngcontent-usv-c162="" class="breadcrumb">
+      <li _ngcontent-usv-c162="" class="breadcrumb-item">
+        <i _ngcontent-usv-c162="" class="fa text-primary fa-home" style="font-size:19px"></i>&nbsp; <a _ngcontent-usv-c162="" routerlink="/login" ng-reflect-router-link="/login" href="/login">Login</a>
+      </li>
+      <li _ngcontent-usv-c162="" class="breadcrumb-item">
+        <a _ngcontent-usv-c162="" routerlink="/main" ng-reflect-router-link="/main" href="/main">Menu</a>
+      </li>
+      <li _ngcontent-usv-c162="" aria-current="Inbox" aria-label="Current Page" class="breadcrumb-item active"> Employe Detailes</li>
+    </ol>
+  </nav>
+  <section class="content">
+    <div class="container">
+      <div class="box box-default">
+        <div class="box-header with-border">
+          <div>
+            <fieldset>
+              <legend>
+                <div class="Row" style="padding-top: 10px;">
+                  <label class="p-5 bg-light-blue" style=" font-weight: bold;">
+                    <div class="section-title">
+                      <p>Employee Identification Number>
+                    </div>
+                  </label>
+                </div>
+              </legend>
+              <form [formGroup]="EmployeeIdentification">
+                <!-- 1 -->
+                <div class="row  mt-5">
+                  <div class="col-md-3">
+                    <label>Aadhaar Ref No :</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" name="text" class="form-control" maxlength="12" formControlName="addharRef" [ngClass]="{'is-invalid':submitted && EmployeeIdentification.controls['addharRef'].errors}" >
+                    <div *ngIf="submitted && EmployeeIdentification.controls['addharRef'].errors"
+                    class="text-danger">
+                    <div
+                      *ngIf="submitted && EmployeeIdentification.controls['addharRef'].errors['required']">
+                      Please Enter Aadhaar Ref No
+                    </div>
+                  </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>Passport No <span class="text-red">*</span> : </label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" name="text" class="form-control" formControlName="PassportNo"  [ngClass]="{'is-invalid':submitted && EmployeeIdentification.controls['PassportNo'].errors}" >
+                    <div *ngIf="submitted && EmployeeIdentification.controls['PassportNo'].errors"
+                    class="text-danger">
+                    <div
+                      *ngIf="submitted && EmployeeIdentification.controls['PassportNo'].errors['required']">
+                      Please Enter Passport No
+                    </div>
+                  </div>
+                  </div>
+                </div>
+
+
+                <div class="row  mt-5">
+                  <div class="col-md-3">
+                    <label>PAN :</label>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" name="text" class="form-control" maxlength="10" formControlName="pancardNo"  [ngClass]="{'is-invalid':submitted && EmployeeIdentification.controls['pancardNo'].errors}">
+                    <div *ngIf="submitted && EmployeeIdentification.controls['pancardNo'].errors"
+                    class="text-danger">
+                    <div
+                      *ngIf="submitted && EmployeeIdentification.controls['pancardNo'].errors['required']">
+                      Please Enter PAN No
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <!-- 2 -->
+              </form>
+              <div class="Row" style="text-align: center;">
+                <button type="submit" class="btn btn-info btn-flat margin w-100" (click)=" onSubmit()">Save</button>
+                <button type="reset" class="btn btn-success btn-flat margin w-100" onclick="reset">Next</button>
+              </div>
+            </fieldset>
+          </div>
+          <div class="Row col-12" style=" text-align: center;">
+            <button class="btn btn-primary margin w-170 btnclr " (click)="ComponetLoad('employee-details') ">Employee Personal Details</button>
+            <button type="button" class="btn btn-primary margin-2 w-170 btnclr" (click)="ComponetLoad('employeeIdentification')">Employee Identification</button>
+            <button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('EmployeeService')">Employee-Service-Details</button>
+            <button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('address')"> Address</button>
+            <button class="btn btn-primary margin-2 w-120 btnclr" (click)="ComponetLoad('familyDetails')">Family Details</button>
+            <button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('bank-details')">Bank Details</button>
+            <button class="btn btn-primary margin-2 w-120 btnclr" (click)="ComponetLoad('pay-entitlement')">Pay Entitlement</button>
+            <button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('document')">Documents</button>
+            <button class="btn btn-primary margin w-170 btnclr" (click)="ComponetLoad('EmpDate')">Employee Dates</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer>
